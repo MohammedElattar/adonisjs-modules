@@ -1,0 +1,21 @@
+{{{#var className = generators.modelName(entity.name)}}}
+{{{#var fileName = generators.modelFileName(entity.name)}}}
+{{{
+  exports({
+    to: app.makePath(`modules`, moduleName, 'models', entity.path, fileName)
+  })
+}}}
+import CustomModel from '#models/utils/custom_model'
+import { column} from '@adonisjs/lucid/orm'
+import { DateTime } from 'luxon'
+
+export default class {{ className }} extends CustomModel {
+  @column({ isPrimary: true })
+    declare id: number
+
+    @column.dateTime({ autoCreate: true })
+    declare createdAt: DateTime
+
+    @column.dateTime({ autoCreate: true, autoUpdate: true })
+    declare updatedAt: DateTime | null
+}

@@ -1,0 +1,19 @@
+{{#var eventName = generators.eventName(event.name)}}
+{{#var eventFileName = generators.eventFileName(event.name)}}
+{{#var eventImportPath = generators.importPath(
+  '#modules',
+  moduleName,
+  'events',
+  event.path !== './' ? `/${event.path}` : '',
+  eventFileName.replace(/\.ts$/, '.js')
+)}}
+{{{
+  exports({
+      to: app.makePath(`modules`, moduleName, 'listeners', entity.path, fileName)
+  })
+}}}
+import type {{ eventName }} from '{{ eventImportPath }}'
+
+export default class {{ className }} {
+  async handle(event: {{ eventName }}) {}
+}

@@ -1,0 +1,28 @@
+{{{#var className = generators.controllerName(entity.name)}}}
+{{{#var fileName = generators.controllerFileName(entity.name)}}}
+import { HttpContext } from '@adonisjs/core/http'
+{{{
+  exports({
+    to: app.makePath(`modules`, moduleName, 'controllers', entity.path, fileName)
+  })
+}}}
+export default class {{ className }} {
+  async index() {
+    //
+  }
+
+  async show({params}: HttpContext) {
+    //
+  }
+  async store({ request }: HttpContext) {
+    //
+  }
+
+  async update({ request }: HttpContext) {
+    //
+  }
+
+  async destroy({ params }: HttpContext) {
+    //
+  }
+}

@@ -1,0 +1,18 @@
+{{#var className = generators.factoryName(entity.name)}}
+{{#var fileName = generators.factoryFileName(entity.name)}}
+{{#var modelName = generators.modelName(model.name)}}
+{{#var modelFileName = generators.modelFileName(model.name)}}
+{{#var modelImportPath = `#modules/${moduleName}/models${model.path !== './' ? `/${model.path}` : ''}/${modelFileName.replace(/\.ts$/, '.js')}`}}
+{{{
+  exports({
+    to: app.makePath(`modules`, moduleName, 'database', 'factories', entity.path, fileName)
+  })
+}}}
+import factory from '@adonisjs/lucid/factories'
+import {{ modelName }} from '{{ modelImportPath }}'
+
+export const {{ className }} = factory
+  .define({{ modelName }}, async ({ faker }) => {
+    return {}
+  })
+  .build()

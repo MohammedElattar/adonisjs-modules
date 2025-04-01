@@ -1,0 +1,10 @@
+{{{#var className = generators.serviceName(entity.name)}}}
+{{{#var fileName = generators.serviceFileName(entity.name)}}}
+{{{
+  exports({
+    to: app.makePath(`modules`, moduleName, 'services', entity.path, fileName)
+  })
+}}}
+export default class {{ className }} {
+  //TODO Logic
+}

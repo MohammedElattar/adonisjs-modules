@@ -1,0 +1,20 @@
+{{{#var className = generators.modelName(entity.name)}}}
+{{#var validatorName = string(generators.validatorName(entity.name)).noCase()}}
+{{{#var fileName = generators.validatorFileName(entity.name)}}}
+{{{
+  exports({
+    to: app.makePath(`modules`, moduleName, 'validators', entity.path, `${fileName.replace('.ts', '_validator.ts')}`)
+  })
+}}}
+import vine from '@vinejs/vine'
+import { InferInput } from '@vinejs/vine/types'
+
+/**
+ * Validator to validate the payload when creating
+ * a new {{ validatorName }}.
+ */
+export const {{ validatorName }}Validator = vine.compile(
+  vine.object({})
+)
+
+export type {{ className }}DTO = InferInput<typeof {{ validatorName }}Validator>

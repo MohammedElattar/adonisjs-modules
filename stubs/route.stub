@@ -1,0 +1,16 @@
+{{#var fileName = string(entity.name).snakeCase().removeExtension().ext('.ts').toString()}}
+{{{
+  exports({
+    to: app.makePath(`modules`, moduleName, 'routes', entity.path, fileName)
+  })
+}}}
+import router from '@adonisjs/core/services/router'
+
+router
+  .group(() => {
+      router.get('/', function(){
+        return 'You are in {{moduleName}} module!'
+      })
+  })
+  .prefix('api/{{moduleName}}')
+

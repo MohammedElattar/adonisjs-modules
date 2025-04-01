@@ -1,0 +1,10 @@
+{{{#var className = generators.controllerName(entity.name)}}}
+{{{#var fileName = generators.controllerFileName(entity.name)}}}
+{{{
+  exports({
+    to: app.makePath(`modules`, moduleName, 'controllers', entity.path, fileName)
+  })
+}}}
+export default class {{ className }} {
+  //TODO Implementation
+}

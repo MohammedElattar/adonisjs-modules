@@ -1,0 +1,13 @@
+{{{#var fileName = generators.seederFileName(entity.name)}}}
+{{{
+  exports({
+    to: app.makePath(`modules`, moduleName, 'database', 'seeders', entity.path, fileName)
+  })
+}}}
+import { BaseSeeder } from '@adonisjs/lucid/seeders'
+
+export default class extends BaseSeeder {
+  async run() {
+    // Write your database queries inside the run method
+  }
+}

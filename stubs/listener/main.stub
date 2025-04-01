@@ -1,0 +1,8 @@
+{{{
+  exports({
+    to: app.makePath(`modules`, moduleName, 'listeners', entity.path, fileName)
+  })
+}}}
+export default class {{ className }} {
+  
+}

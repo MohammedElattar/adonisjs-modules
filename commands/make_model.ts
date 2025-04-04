@@ -51,7 +51,7 @@ export default class MakeModel extends CustomBaseCommand {
 
   private async callRelatedCommand(condition: boolean, command: string) {
     if (condition) {
-      await this.kernel.exec(command, [this.name, `--module=${this.getModuleName()}`])
+      await this.kernel.exec(command, [this.name, `--module=${await this.getModuleName()}`])
     }
   }
 }
